@@ -56,3 +56,8 @@ footer {
 footer p {
     margin-bottom: .25rem;
 }
+
+.tasks-list{
+    margin-top: 50px;
+    max-width: 400px;
+}

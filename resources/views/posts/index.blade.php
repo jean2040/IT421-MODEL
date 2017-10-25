@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <main role="main">
+
 
         <section class="jumbotron text-center">
             <div class="container">
@@ -62,7 +62,7 @@
             </div>
         </div>
 
-    </main>
+
 @endsection
 
 

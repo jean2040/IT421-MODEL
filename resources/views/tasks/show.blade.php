@@ -1,13 +1,8 @@
-<!doctype html>
-<html>
-<head>
+@extends('layouts.layout')
 
-
-    <title>IT 421</title>
-
-</head>
-<body>
+@section('content')
 
     <h1>{{$task->body}}</h1>
-</body>
-</html>
+
+
+@endsection

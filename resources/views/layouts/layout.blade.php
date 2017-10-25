@@ -21,9 +21,12 @@
 
 @include('layouts.nav')
 
-   <div class="container">
+<main role="main">
+    <div class="container">
        @yield('content')
-   </div>
+    </div>
+
+</main>
 
 
 @include('layouts.footer')

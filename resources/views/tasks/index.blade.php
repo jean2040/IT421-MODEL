@@ -1,22 +1,18 @@
-<!doctype html>
-<html>
-<head>
+@extends('layouts.layout')
 
+@section('content')
 
-    <title>IT 421</title>
-
-</head>
-<body>
-
-<ul>
+<div class="list-group tasks-list">
     @foreach($tasks as $task)
-        <li>
-            <a href="/model_view/public/tasks/{{$task->id}}">
+
+            <a class="list-group-item list-group-item-action"
+               href="/model_view/public/tasks/{{$task->id}}">
                 {{$task->body}}
             </a>
-        </li>
+
 
     @endforeach
-</ul>
-</body>
-</html>
+</div>
+
+@endsection
+
