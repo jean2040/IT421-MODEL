@@ -14,12 +14,7 @@
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/{task}', 'TasksController@show');
 
-Route::get('/', function () {
-
-    $name = 'Jean Gomez';
-    $tasks = App\Task::all();
-
-    return view('welcome', compact('name'), compact('tasks'));
-});
+Route::get('/', 'PostsController@index');
+Route::get('/post/{post}', 'PostsController@show');
 
 
