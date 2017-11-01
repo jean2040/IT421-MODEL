@@ -25,10 +25,12 @@ class TasksController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function newTask()
     {
         //
+        return view('tasks.create');
     }
+
 
     /**
      * Store a newly created resource in storage.
@@ -36,9 +38,18 @@ class TasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Task $task)
     {
-        //
+        $task = new Task;
+        $task->body = request('body');
+        $task->complete = request('completed');
+        $task->save();
+        return redirect('/tasks');
+    }
+
+    public function update(Task $task)
+    {
+
     }
 
     /**
@@ -58,9 +69,13 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Task $task)
     {
         //
+        $task->body = request('body');
+        $task->complete = request('completed');
+        $task->update();
+        return redirect('/tasks');
     }
 
     /**
@@ -70,10 +85,7 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
-    {
-        //
-    }
+
 
     /**
      * Remove the specified resource from storage.
@@ -81,8 +93,12 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete(Task $task)
     {
         //
+        $task->delete();
+
+        // redirect
+        return redirect('/tasks');
     }
 }

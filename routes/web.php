@@ -11,8 +11,16 @@
 |
 */
 
+Route::post('/tasks/store', 'TasksController@store');
 Route::get('/tasks', 'TasksController@index');
+Route::get('/tasks/new', 'TasksController@newTask');
+
+Route::patch('/tasks/{task}/edit', 'TasksController@edit');
 Route::get('/tasks/{task}', 'TasksController@show');
+Route::delete('/tasks/{task}/delete','TasksController@delete');
+
+
+
 
 Route::get('/', 'PostsController@index');
 Route::get('/post/{post}', 'PostsController@show');
