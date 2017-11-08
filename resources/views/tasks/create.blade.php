@@ -1,7 +1,15 @@
 @extends('layouts.layout')
 
 @section('content')
-
+    @if (count($errors) > 0)
+        <div class = "alert alert-danger">
+            <ul>
+                @foreach ($errors->all() as $error)
+                    <li>{{ $error }}</li>
+                @endforeach
+            </ul>
+        </div>
+    @endif
     <h1>New Task</h1>
 
     <form action="store" method="post" class="col-sm-8">
@@ -17,7 +25,7 @@
 
             {{Form::select('completed',['Incomplete','Complete'],0, ['class'=>'form-control', 'id'=>'taskStatus'])}}
         </div>
-        <button type="submit" class="btn btn-primary">Save</button>
+        <button type="submit" class="btn btn-primary btn-block">Save</button>
 
     </form>
 

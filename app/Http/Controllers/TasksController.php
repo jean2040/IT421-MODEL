@@ -38,13 +38,20 @@ class TasksController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Task $task)
+    public function store(Request $request, Task $task)
     {
-        $task = new Task;
-        $task->body = request('body');
-        $task->complete = request('completed');
-        $task->save();
-        return redirect('/tasks');
+
+        $this->validate($request,[
+            'body'=>'required|max:8'
+        ]);
+
+            $task = new Task;
+            $task->body = request('body');
+            $task->complete = request('completed');
+            $task->save();
+            return redirect('/tasks');
+
+
     }
 
     public function update(Task $task)

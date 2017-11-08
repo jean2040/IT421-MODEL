@@ -19,7 +19,7 @@
     </div>
     <div class="navbar navbar-dark bg-dark">
         <div class="container d-flex justify-content-between">
-            <a href="#" class="navbar-brand">Album</a>
+            <a href="/model_view/public/tasks" class="navbar-brand">Tasks</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>

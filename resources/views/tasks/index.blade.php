@@ -3,19 +3,24 @@
 @section('content')
 
 <div class="list-group tasks-list">
-    @foreach($tasks as $task)
 
-            <a class="list-group-item list-group-item-action"
-               href="/model_view/public/tasks/{{$task->id}}">
-                <div class="d-flex w-100 justify-content-between">
-                    <h5 class="mb-1">{{$task->body}}</h5>
-                    <small>{{$task->complete}}</small>
-                </div>
+    @if($tasks->isEmpty()))
+    <a href="/model_view/public/tasks/new/">Create a Task</a>
+    @else
+        @foreach($tasks as $task)
 
-            </a>
+                <a class="list-group-item list-group-item-action"
+                   href="/model_view/public/tasks/{{$task->id}}">
+                    <div class="d-flex w-100 justify-content-between">
+                        <h5 class="mb-1">{{$task->body}}</h5>
+                        <small> {{$task->complete == 1 ? 'Complete' : 'Incomplete'}}</small>
+                    </div>
+
+                </a>
 
 
-    @endforeach
+        @endforeach
+    @endif
 </div>
 
 
