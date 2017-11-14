@@ -42,11 +42,13 @@ class TasksController extends Controller
     {
 
         $this->validate($request,[
-            'body'=>'required|max:8'
+            'title'=>'required',
+            'description'=>'required'
         ]);
 
             $task = new Task;
-            $task->body = request('body');
+            $task->title = request('title');
+            $task->description = request('description');
             $task->complete = request('completed');
             $task->save();
             return redirect('/tasks');
@@ -76,10 +78,15 @@ class TasksController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Task $task)
+    public function edit(Task $task, Request $request)
     {
+        $this->validate($request,[
+            'title'=>'required',
+            'description'=>'required'
+        ]);
         //
-        $task->body = request('body');
+        $task->title = request('title');
+        $task->description = request('description');
         $task->complete = request('completed');
         $task->update();
         return redirect('/tasks');
