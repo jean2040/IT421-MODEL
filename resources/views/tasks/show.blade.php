@@ -22,7 +22,9 @@
             <input type="text" class="form-control" id="taskTitle" name="title" value="{{$task->title}}">
         </div>
 
-         <textarea class="form-control" id="body" name="description" rows="3"></textarea>
+         <textarea class="form-control" id="body" name="description" rows="3">
+             {{$task->description}}
+         </textarea>
 
         <div class="form-group">
             <label for="taskStatus">Task Status</label>

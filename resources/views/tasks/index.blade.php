@@ -10,12 +10,13 @@
     @else
         @foreach($tasks as $task)
 
-                <a class="list-group-item list-group-item-action"
+                <a class="list-group-item {{$task->complete == 1 ? 'list-group-item-action' : 'list-group-item-warning'}}"
                    href="/model_view/public/tasks/{{$task->id}}">
                     <div class="d-flex w-100 justify-content-between">
                         <h5 class="mb-1">{{$task->title}}</h5>
                         <small> {{$task->complete == 1 ? 'Complete' : 'Incomplete'}}</small>
                     </div>
+                    <p class="mb-1">{{$task->description}}</p>
 
                 </a>
 

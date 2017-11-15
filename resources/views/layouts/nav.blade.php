@@ -9,7 +9,7 @@
                 <div class="col-sm-4 py-4">
                     <h4 class="text-white">Contact</h4>
                     <ul class="list-unstyled">
-                        <li><a href="#" class="text-white">GitHub</a></li>
+                        <li><a href="https://github.com/jean2040/IT421-MODEL" class="text-white">GitHub</a></li>
                         <li><a href="#" class="text-white">Email me</a></li>
                     </ul>
                 </div>
@@ -17,8 +17,12 @@
         </div>
     </div>
     <div class="navbar navbar-dark bg-dark">
-        <div class="container d-flex justify-content-between">
+        <div class="d-flex justify-content-center">
+            <a href="#" class="navbar-brand"><img src="{{ asset('images/profile-icon.png') }}" width="30px" height="30px"></a>
             <a href="/model_view/public/tasks" class="navbar-brand">Tasks</a>
+            <a href="/model_view/public/tasks/new/" class="navbar-brand">Create Task</a>
+        </div>
+        <div class="d-flex flex-row-reverse">
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarHeader" aria-controls="navbarHeader" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
