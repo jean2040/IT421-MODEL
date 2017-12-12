@@ -14,10 +14,14 @@ class Task extends Model
         return $this->hasMany(Comment::class);
     }
     //
-    public function addComment($body) {
+    public function addComment($body, $user_id) {
 
 
-        $this->comments()->Create(compact('body'));
+        $this->comments()->Create(compact('body', 'user_id'));
+    }
+
+    public function user(){
+        return $this->hasMany(User::class);
     }
 
     public function scopeIncomplete($query)

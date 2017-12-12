@@ -15,8 +15,9 @@ class CommentsController extends Controller
             'body'=>'required'
 
         ]);
+        $userID = auth()->id();
 
-        $task->addComment(request('body'));
+        $task->addComment(request('body'), $userID);
         return back();
     }
 }

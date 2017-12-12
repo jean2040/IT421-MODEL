@@ -15,7 +15,10 @@ class TasksController extends Controller
     public function index()
     {
         //
-        $tasks = Task::all();
+        $user_id = auth()->id();
+        $tasks = Task::all()->where('user_id',$user_id);
+        //or
+        // $tasks = Task::where('user_id',$user_id)->get();
 
         return view('tasks.index', compact('tasks'));
     }
@@ -43,12 +46,13 @@ class TasksController extends Controller
 
         $this->validate($request,[
             'title'=>'required',
-            'description'=>'required'
+
         ]);
 
             $task = new Task;
+            $task->user_id = auth()->id();
             $task->title = request('title');
-            $task->description = request('description');
+            $task->description = trim(request('description')) !== '' ? request('decription') : null;
             $task->complete = request('completed');
             $task->save();
             return redirect('/tasks');
@@ -81,12 +85,11 @@ class TasksController extends Controller
     public function edit(Task $task, Request $request)
     {
         $this->validate($request,[
-            'title'=>'required',
-            'description'=>'required'
+            'title'=>'required'
         ]);
         //
         $task->title = request('title');
-        $task->description = request('description');
+        $task->description = trim(request('description')) !== '' ? request('decription') : null;
         $task->complete = request('completed');
         $task->update();
         return redirect('/tasks');

@@ -10,7 +10,7 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::get('/', 'TasksController@index');
 Route::post('/tasks/store', 'TasksController@store');
 Route::get('/tasks', 'TasksController@index');
 Route::get('/tasks/new', 'TasksController@newTask');
@@ -22,7 +22,11 @@ Route::delete('/tasks/{task}/delete','TasksController@delete');
 Route::post('/tasks/{task}/comments', 'CommentsController@create');
 
 
-Route::get('/', 'PostsController@index');
+//Route::get('/', 'PostsController@index');
 Route::get('/post/{post}', 'PostsController@show');
 
 
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
