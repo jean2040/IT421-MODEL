@@ -8,6 +8,9 @@
     <h2>No tasks found.</h2>
     <a class="btn btn-primary" href="/model_view/public/tasks/new/" role="button">Create a Task</a>
     @else
+
+
+
         @foreach($tasks as $task)
 
                 <a class="list-group-item {{$task->complete == 1 ? 'list-group-item-action' : 'list-group-item-warning'}}"

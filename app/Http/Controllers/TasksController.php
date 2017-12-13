@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Task;
+use Illuminate\Support\Facades\Input;
 
 class TasksController extends Controller
 {
@@ -117,5 +118,30 @@ class TasksController extends Controller
 
         // redirect
         return redirect('/tasks');
+    }
+
+    public function showOnly($show){
+        $user_id = auth()->id();
+        if ($show=='incomplete'){
+          $tasks = Task::all()->where('user_id',$user_id)->where('complete',0);
+        //or
+        }
+        elseif($show=='complete'){
+            $tasks = Task::all()->where('user_id',$user_id)->where('complete',1);
+        }elseif($show=='bydateUp'){
+            $tasks = Task::orderBy('created_at', 'asc')->where('user_id',$user_id)->get();
+        }elseif($show=='bydateDown'){
+            $tasks = Task::orderBy('created_at', 'desc')->where('user_id',$user_id)->get();
+        }
+        // $tasks = Task::where('user_id',$user_id)->get();
+        return view('tasks.index', compact('tasks'));
+
+    }
+    public function sort(){
+        $mode = request()->get('sortBy');
+        $user_id = auth()->id();
+        $tasks = Task::orderBy('created_at', $mode)->where('user_id',$user_id)->get();
+        return view('tasks.index', compact('tasks'));
+        //return redirect('/tasks/show/bydateUp/');
     }
 }

@@ -15,9 +15,20 @@
                 <li class="nav-item">
                     <a href="/model_view/public/tasks/new/" class="nav-link">Create Task</a>
                 </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown08" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Sort / Show</a>
+                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown08">
+                        <a class="dropdown-item" href="/model_view/public/tasks/show/incomplete">Show Incomplete</a>
+                        <a class="dropdown-item" href="/model_view/public/tasks/show/complete">Show Complete</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="/model_view/public/tasks/show/bydateUp">Sort By Date UP</a>
+                        <a class="dropdown-item" href="/model_view/public/tasks/show/bydateDown">Sort By Date Down</a>
+                    </div>
+                </li>
 
             </ul>
-            <div>
+
+
             @guest
                 <a class="navbar-brand" href="{{ route('login') }}">Login</a>
                 <a class="navbar-brand" href="{{ route('register') }}">Register</a>
@@ -26,10 +37,10 @@
                         <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{ Auth::user()->name }}
                         </button>
-                        <div class="dropdown-menu dropdown-menu-right">
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="dropdown08">
                             <a href="{{ route('logout') }}" class=" dropdown-item btn btn-primary"
                                onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
+                                   document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
 
@@ -39,7 +50,11 @@
                         </div>
 
                     </div>
-                    @endguest
+
+                        @endguest
+
+
+
             </div>
         </div>
     </nav>
